@@ -6,5 +6,5 @@ import org.springframework.data.repository.Repository;
 import java.util.List;
 
 public interface CompanyRepository extends Repository<Company, Long> {
-    List<Company> findAll();
+  List<Company> findAll();
 }
