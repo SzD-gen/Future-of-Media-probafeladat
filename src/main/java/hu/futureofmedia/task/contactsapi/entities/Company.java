@@ -1,19 +1,26 @@
 package hu.futureofmedia.task.contactsapi.entities;
 
+import java.util.ArrayList;
+import java.util.List;
+import javax.persistence.CascadeType;
 import javax.persistence.Entity;
 import javax.persistence.Id;
+import javax.persistence.OneToMany;
 
 @Entity
 public class Company {
-    @Id
-    private Long id;
-    private String name;
+  @Id
+  private Long id;
+  private String name;
 
-    public Long getId() {
-        return id;
-    }
+  @OneToMany(mappedBy = "company", cascade = CascadeType.ALL, orphanRemoval = true)
+  private List<Client> clients = new ArrayList<>();
 
-    public String getName() {
-        return name;
-    }
+  public Long getId() {
+    return id;
+  }
+
+  public String getName() {
+    return name;
+  }
 }
