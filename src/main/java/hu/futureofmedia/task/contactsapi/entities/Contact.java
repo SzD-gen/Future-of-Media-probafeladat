@@ -1,5 +1,6 @@
 package hu.futureofmedia.task.contactsapi.entities;
 
+import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
 import java.time.LocalDateTime;
 import javax.persistence.Column;
 import javax.persistence.Entity;
@@ -10,6 +11,7 @@ import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.JoinColumn;
 import javax.persistence.ManyToOne;
+import javax.persistence.Table;
 import javax.validation.constraints.NotBlank;
 import javax.validation.constraints.NotNull;
 import lombok.Getter;
@@ -20,7 +22,8 @@ import lombok.Setter;
 @Getter
 @Setter
 @NoArgsConstructor
-public class Client {
+@Table(name = "contact")
+public class Contact {
 
   @Id
   @GeneratedValue(strategy = GenerationType.IDENTITY)
@@ -42,14 +45,14 @@ public class Client {
   @NotNull
   private String phoneNumber;
 
-  @NotBlank
+  @NotNull
   @ManyToOne
+  @JsonIgnoreProperties({"contacts"})
   @JoinColumn(name = "company_id")
   private Company company;
 
   private String comment;
 
-  @NotBlank
   @Enumerated(EnumType.STRING)
   private statuses status = statuses.active;
 
