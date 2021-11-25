@@ -1,4 +1,4 @@
-#Dokumentáció
+# Dokumentáció
 
 GET /api/contacts
 * Tízesével kilistázza az aktív státuszú kapcsolattartókat
