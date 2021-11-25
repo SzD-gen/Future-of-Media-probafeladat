@@ -1,39 +1,31 @@
-# Használati útmutató
+#Dokumentáció
 
-A projekt tartalmaz egy `docker-compose.yml` fájlt, ami adatbázist biztosít a fejlesztéshez.
+GET /api/contacts
+* Tízesével kilistázza az aktív státuszú kapcsolattartókat
+* Query paraméterben lehet megadni az oldalszámot (/api/contacts?page=), ha ezt nem adjuk meg, az első oldalt kapjuk
+* A felhasználói esetben lévő hivatkozást az ID helyettesíti
 
-## Konténerek indítása
+GET /api/contacts/{id}
+* Részletes leírás egy kapcsolattartóról
+* Az ID-t Pathvariable-ként lehet megadni (api/contacts/1)
+* Ha nem használatban lévő id-t adunk meg, hibaüzenetet ad
 
-Az indításhoz előfeltétel, hogy Docker (pl. Docker for Desktop) telepítve legyen a számítógépen.
+POST /api/contacts
+* Új kapcsolattartó létrehozása
+* A post kéréssel Jsonban megadandó: 
+  * vezetéknév(lastName)
+  * keresztnév(firstName)
+  * vállalat(companyName)
+  * ímél(eMail)
+  * telefonszám(phoneNumber)
+  * komment(comment)
+* Rossz formátumú ímél vagy telefonszám esetén hibaüzenetet ad
 
-Ezt követően parancssorból a konténerek egyszerűen elindíthatóak az alábbi parancs kiadásával:  
-`docker-compose up`
+PUT /api/contacts/id
+* Kapcsolattartó adatainak megváltoztatása
+* A változtatandó kapcsolattartó ID-jét a részletezéshez hasonlóan kell megadni.
+* Az adatokat új létrehozásához hasonlóan kell megadni.
 
-Leállítani megszakítás küldésével (`CTRL+C`) lehetséges.
-
-### Daemon mód
-
-Ebben az esetben a konténerek a háttérben fognak futni.
-
-Indítás: `docker-compose up -d`  
-Leállítás: `docker-compose down`
-
-Logok olvasása:  
-`docker-compose logs -f database`  
-`docker-compose logs -f mailhog`
-
-## Adatbázis
-
-Adatbázisként PostgreSQL került beállításra. A konténer nem került beállításra perzisztens volume, így a konténer
-törlésekor elveszhet a benne tárolt adat.
-
-Inicializáláskor az adatbázisba betöltésre kerül egy `company` tábla néhány példa adattal, ami a cég kapcsolat
-kialakításához használható a feladatban.
-
-### Csatlakozáshoz szükséges adatok
-
-jDBC connection string: `jdbc:postgresql://localhost:15432/contactsapi`
-
-Felhasználónév: `contactsapi`  
-Jelszó: `contactsapi`  
-Adatbázis: `contactsapi`
+DELETE /api/contacts/id
+* Kapcsolattartó státuszának töröltre váltása
+* A kapcsoattartó nem törlődik.
