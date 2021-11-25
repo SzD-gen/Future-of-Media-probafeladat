@@ -18,12 +18,14 @@ dependencies {
     implementation 'org.springframework.boot:spring-boot-starter-web'
     implementation 'com.googlecode.libphonenumber:libphonenumber:8.12.37'
     implementation 'org.flywaydb:flyway-core'
+    module 'com.fasterxml.jackson.datatype:jackson-datatype-jsr310:2.13.0'
     compileOnly 'commons-validator:commons-validator:1.7'
     compileOnly 'org.projectlombok:lombok:1.18.22'
     annotationProcessor 'org.projectlombok:lombok:1.18.22'
     runtimeOnly 'com.h2database:h2'
     runtimeOnly 'org.postgresql:postgresql'
     testImplementation 'org.springframework.boot:spring-boot-starter-test'
+    implementation 'commons-validator:commons-validator:1.7'
 }
 
 test {
