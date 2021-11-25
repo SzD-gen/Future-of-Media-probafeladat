@@ -73,6 +73,7 @@ public class ContactServiceImpl implements ContactService {
         throw new BadResourceException("Invalid phone number");
       } else {
         Contact savedContact = inputToEntity(input);
+        savedContact.setId(id);
         LocalDateTime created = contactRepository.findById(id).get().getCreated();
         savedContact.setLastChanged(LocalDateTime.now());
         savedContact.setCreated(created);
