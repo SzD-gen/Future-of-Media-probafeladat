@@ -17,6 +17,7 @@ dependencies {
     implementation 'org.springframework.boot:spring-boot-starter-validation'
     implementation 'org.springframework.boot:spring-boot-starter-web'
     implementation 'com.googlecode.libphonenumber:libphonenumber:8.12.37'
+    implementation 'org.flywaydb:flyway-core'
     compileOnly 'commons-validator:commons-validator:1.7'
     compileOnly 'org.projectlombok:lombok:1.18.22'
     annotationProcessor 'org.projectlombok:lombok:1.18.22'

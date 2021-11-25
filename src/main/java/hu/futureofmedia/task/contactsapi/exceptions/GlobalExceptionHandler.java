@@ -89,7 +89,7 @@ public class GlobalExceptionHandler {
   private Map<String, String> constraintViolationMessages() {
     return Stream.of(new String[][] {
         {"UNIQUECITYANDADDRESS", "Already existing Branch in the same City & Address"},
-        {"UNIQUEPIN", "Client already exists -> Personal Identification Number taken"},
+        {"UNIQUEPIN", "Contact already exists -> Personal Identification Number taken"},
     }).collect(Collectors.toMap(data -> data[0], data -> data[1]));
   }
 

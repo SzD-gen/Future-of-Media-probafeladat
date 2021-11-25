@@ -14,7 +14,7 @@ public class Company {
   private String name;
 
   @OneToMany(mappedBy = "company", cascade = CascadeType.ALL, orphanRemoval = true)
-  private List<Client> clients = new ArrayList<>();
+  private List<Contact> contacts = new ArrayList<>();
 
   public Long getId() {
     return id;
